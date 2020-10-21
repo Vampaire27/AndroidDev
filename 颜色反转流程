@@ -17,6 +17,8 @@ public static void applyInversionSetting(Context context, int userId) {
 }
 ```
 
+
+
 ```
 /**
  * Matrix and offset used for luminance inversion. Represents a transform
@@ -81,7 +83,7 @@ if (colorMatrix != mPreviousColorMatrix) {
 ```
 
 
-hwc.cpp
+hwc.cp
 ```
 
 #ifdef USES_PQSERVICE
@@ -141,6 +143,17 @@ int32_t HWCDisplay::setColorTransform(const float* matrix, const int32_t& hint)
 #endif
     }
     return m_color_transform_ok ? HWC2_ERROR_NONE : HWC2_ERROR_UNSUPPORTED;
+}
+
+```
+
+
+
+
+```
+if (m_color_transform_ok)
+{
+    HWCMediator::getInstance().getOvlDevice(HWC_DISPLAY_PRIMARY)->setLastValidColorTransform(HWC_DISPLAY_PRIMARY, m_color_transform);
 }
 
 ```
