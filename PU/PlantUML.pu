@@ -1,0 +1,85 @@
+
+`http://archive.3zso.com/archives/plantuml-quickstart.html#orgheadline3
+
+`顺序图（Sequence Diagram）
+@startuml
+
+
+  Alice -> Bob: Authentication Request
+  Bob --> Alice: Authentication Response
+
+  Alice -> Bob: Another atuhentication Request
+  Alice <-- Bob: Another authentication Response
+
+@enduml
+
+
+@startuml
+actor Bob #red
+' The only defference between actor
+' and participant is the drawing
+participant Alice
+participant "I have a really\nlong name" as L #99ff99
+/' You can also declare:
+   participant L as "I have a really\nlong name" #99ff99
+  '/
+
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+Bob -> L: Log transaction
+@enduml
+
+
+
+@startuml
+Bob -> Alice
+Bob ->> Alice
+Bob -\ Alice
+Bob \\- Alice
+Bob //-- Alice
+
+Bob ->o Alice
+Bob o\\-- Alice
+
+Bob <-> Alice
+Bob <<-\\o Alice
+@enduml
+
+
+@startuml
+autonumber
+title Simple Comunication example
+Bob -[#red]> Alice : hello
+Alice -[#0000FF]->Bob : ok
+
+@enduml
+
+
+
+@startuml
+Bliss -> Tia : I love you
+Bliss -> Tia : I miss you
+
+newpage
+
+@enduml
+
+
+
+@startuml
+(*) --> "Select site"
+ --> "Commission architect"
+ --> "Develop plan"
+ --> "Bid plan" as bp
+ if "" then
+   -->[else] ===B1===
+   --> "Do site work"
+   --> ===B2===
+   ===B1=== --> "Do trade work"
+   --> ===B2===
+   --> "Finish construction"
+   --> (*)
+ else
+   -u->[not accepted] bp
+ endif
+@enduml
