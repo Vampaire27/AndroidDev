@@ -20,3 +20,20 @@
     (*) --> [网络恢复] "检查在线离线状态"
 
 @enduml
+
+
+@startuml
+autonumber
+  CarNetWorks ->后台服务器:登陆
+  后台服务器 -->CarNetWorks:登陆成功
+
+  CarNetWorks -> 融云服务:登陆
+  融云服务 --> CarNetWorks:登陆
+
+  loop 一直循环心跳
+  CarNetWorks-> 后台服务器:发送心跳(2.5分钟)
+  autonumber 6
+  CarNetWorks-> 融云服务:发送心跳(2.5分钟)
+  end
+
+@enduml
